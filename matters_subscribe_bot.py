@@ -41,7 +41,7 @@ def processStatus(url, channels):
 		album_sender.send_v2(channel, result)
 
 def getStatus(user_id):
-	url = 'https://www.douban.com/people/%s' % user_id
+	url = 'https://www.matters.com/people/%s' % user_id
 	soup = BeautifulSoup(cached_url.get(url, sleep=20), 'html.parser')
 	for item in soup.find_all('span', class_='created_at'):
 		sub_item = item.find('a')
@@ -50,7 +50,7 @@ def getStatus(user_id):
 		yield sub_item['href']
 
 def getNotes(user_id, page=1):
-	url = 'https://www.douban.com/people/%s/notes?start=%d' % (user_id, page * 10 - 10)
+	url = 'https://www.matters.com/people/%s/notes?start=%d' % (user_id, page * 10 - 10)
 	soup = BeautifulSoup(cached_url.get(url, sleep=20), 'html.parser')
 	for item in soup.find_all('div', class_="note-container"):
 		yield item['data-url']
@@ -76,9 +76,9 @@ def backfill(chat_id):
 				processNote(note, channels)
 	tele.bot.get_chat(chat_id).send_message('finished backfill')
 
-def doubanLoop():
+def mattersLoop():
 	loopImp()
-	threading.Timer(60 * 60 * 2, doubanLoop).start()
+	threading.Timer(60 * 60 * 2, mattersLoop).start()
 
 @log_on_fail(debug_group)
 def handleCommand(update, context):
@@ -96,17 +96,15 @@ def handleCommand(update, context):
 		parse_mode='markdown', disable_web_page_preview=True)
 
 HELP_MESSAGE = '''
-**Support notes only**
-
 Commands:
-/dbb_add - add douban user
-/dbb_remove - remove douban user
-/dbb_view - view subscription
-/dbb_backfill - backfill
+/m_add - add Matters user
+/m_remove - remove Matters user
+/m_view - view subscription
+/m_backfill - backfill
 
 Can be used in group/channel also.
 
-Github： https://github.com/gaoyunzhi/douban_bot
+Github： https://github.com/gaoyunzhi/matters_subscribe_bot
 '''
 
 def handleHelp(update, context):
@@ -117,7 +115,7 @@ def handleStart(update, context):
 		update.message.reply_text(HELP_MESSAGE)
 
 if __name__ == '__main__':
-	threading.Timer(1, doubanLoop).start() 
+	threading.Timer(1, mattersLoop).start() 
 	dp = tele.dispatcher
 	dp.add_handler(MessageHandler(Filters.command, handleCommand))
 	dp.add_handler(MessageHandler(Filters.private & (~Filters.command), handleHelp))

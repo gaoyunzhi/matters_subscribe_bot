@@ -1,8 +1,8 @@
 Powers https://t.me/matters_subscribe_bot
 
 Commands:
-/m_add - add douban user
-/m_remove - remove douban user
+/m_add - add Matters user
+/m_remove - remove Matters user
 /m_view - view subscription
 /m_backfill - backfill 
 

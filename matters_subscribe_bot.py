@@ -35,7 +35,6 @@ def loopImp():
 		domain = 'https://matters.news/'
 		user_url = domain + user_id
 		for note, _ in link_extractor.getLinks(user_url, domain=domain):
-			print(note)
 			processNote(note, channels)
 
 def mattersLoop():

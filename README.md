@@ -3,8 +3,7 @@ Powers https://t.me/matters_subscribe_bot
 Commands:
 /m_add - add Matters user
 /m_remove - remove Matters user
-/m_view - view subscription
-/m_backfill - backfill 
+/m_view - view subscription 
 
 Can be used in group/channel also.
 

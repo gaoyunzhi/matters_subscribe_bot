@@ -52,7 +52,7 @@ class Subscription(object):
 
 	def get(self, chat_id):
 		return 'subscriptions: ' + ' '.join([
-			'[%s](%s)' % (user_id, 'https://www.douban.com/people/' + user_id)
+			'[%s](%s)' % (user_id, 'https://matters.news/' + user_id)
 			for user_id in self.sub.get(chat_id, [])])
 
 	def subscriptions(self):

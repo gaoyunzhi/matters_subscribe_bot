@@ -33,7 +33,7 @@ def loopImp():
 	for user_id in db.sub.subscriptions():
 		channels = db.sub.channels(user_id, tele.bot)
 		user_url = 'https://matters.news/' + user_id
-		for note, _ in link_extractor.getLinks(user_url)
+		for note, _ in link_extractor.getLinks(user_url):
 			processNote(note, channels)
 
 def mattersLoop():

@@ -55,7 +55,7 @@ def handleCommand(update, context):
 
 HELP_MESSAGE = '''
 Commands:
-/m_add - add Matters user
+/m_add - add Matters user / user link
 /m_remove - remove Matters user
 /m_view - view subscription
 

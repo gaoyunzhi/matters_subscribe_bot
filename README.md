@@ -1,7 +1,7 @@
 Powers https://t.me/matters_subscribe_bot
 
 Commands:
-/m_add - add Matters user
+/m_add - add Matters user / user link
 /m_remove - remove Matters user
 /m_view - view subscription 
 

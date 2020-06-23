@@ -21,11 +21,14 @@ db = DB()
 
 @log_on_fail(debug_group)
 def processNote(note, channels):
+	print(1, note)
 	if not db.existing.add(note):
 		return
+	print(2, note)
 	note = export_to_telegraph.export(note, force=True) or note
 	for channel in channels:
-		time.sleep(5)
+		time.sleep(10)
+		print(3, note)
 		channel.send_message(note)
 		
 @log_on_fail(debug_group)

@@ -26,15 +26,16 @@ def processNote(note, channels):
 		return
 	print(2, note)
 	note = export_to_telegraph.export(note, force=True) or note
+	print(3, note)
 	for channel in channels:
-		time.sleep(10)
-		print(3, note)
+		# time.sleep(10)
+		print(4, note)
 		channel.send_message(note)
 		
 @log_on_fail(debug_group)
 def loopImp():
 	for user_id in db.sub.subscriptions():
-		channels = db.sub.channels(user_id, tele.bot)
+		channels = list(db.sub.channels(user_id, tele.bot))
 		domain = 'https://matters.news/'
 		user_url = domain + user_id
 		for note, _ in link_extractor.getLinks(user_url, domain=domain):

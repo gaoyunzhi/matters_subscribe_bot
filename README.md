@@ -1,3 +1,7 @@
+Deprecated. use https://t.me/web_subscription_bot instead.
+
+====
+
 Powers https://t.me/matters_subscribe_bot
 
 Commands:

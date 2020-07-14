@@ -34,7 +34,7 @@ def loopImp():
 		channels = list(db.sub.channels(user_id, tele.bot))
 		domain = 'https://matters.news/'
 		user_url = domain + user_id
-		for note, _ in link_extractor.getLinks(user_url, domain=domain):
+		for note, _ in link_extractor.getLinks(user_url):
 			processNote(note, channels)
 
 def mattersLoop():
